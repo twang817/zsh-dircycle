@@ -17,6 +17,9 @@ _dircycle_update_cycled() {
     if typeset -f prompt_pure_setup > /dev/null; then
         prompt_pure_async_tasks
         prompt_pure_preprompt_render
+    elif (( $+functions[p10k] )); then
+	_p9k_precmd
+        zle reset-prompt
     else
         zle reset-prompt
     fi
